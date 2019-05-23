@@ -18,7 +18,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	//factory(Avatar::class, 15)->create();
+        $result = Avatar::getAvatar();
+        foreach ((range(1, 15)) as $value) 
+        {
+            $avatar = $result['hits'][rand(0,199)]['webformatURL'];
+            Avatar::create(array(
+                'lien_image' => $avatar
+                )
+            );
+        }
         factory(Utilisateur::class, 20)->create();
     	factory(Categorie::class, 6)->create();
     	factory(Etape::class, 80)->create();
@@ -26,8 +34,8 @@ class DatabaseSeeder extends Seeder
     	factory(Recette::class, 20)->create();
     	factory(IngredientRecette::class, 120)->create();
 
-    	$categoriesIds = DB::table('categories')->pluck('id');
-    	$recettesIds = DB::table('recettes')->pluck('id');
+    	$categoriesIds = DB::table('categories')->pluck('id')->toArray();
+    	$recettesIds = DB::table('recettes')->pluck('id')->toArray();
 
     	//Remplit la table categories_recettes de 40 lignes 
     	foreach ((range(1, 40)) as $value) {

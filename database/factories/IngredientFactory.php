@@ -2,11 +2,12 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Model;
+use App\Ingredient;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Ingredient::class, function (Faker $faker) {
+	$faker->addProvider(new \Bezhanov\Faker\Provider\Food($faker));
     return [
-        'nom' => $faker->ingredient;
+        'nom' => $faker->ingredient,
     ];
 });

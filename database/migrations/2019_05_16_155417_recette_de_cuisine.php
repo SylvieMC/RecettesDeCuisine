@@ -101,8 +101,8 @@ class RecetteDeCuisine extends Migration
     {
         Schema::dropIfExists('utilisateurs');
         Schema::dropIfExists('avatars');
-        Schema::dropIfExists('recettes');
         Schema::dropIfExists('categories');
+        Schema::dropIfExists('recettes');
         Schema::dropIfExists('categories_recettes');
         Schema::dropIfExists('etapes');
         Schema::dropIfExists('ingredients');

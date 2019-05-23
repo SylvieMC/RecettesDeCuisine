@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recette extends Model
 {
+    protected $table = 'recettes';
+
     public function categories()
     {
         return $this->belongsToMany(Categorie::class);

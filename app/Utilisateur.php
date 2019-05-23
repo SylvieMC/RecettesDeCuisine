@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Utilisateur extends Model
 {
+	protected $table = 'utilisateurs';
+
     public function avatar()
     {
         return $this->hasOne(Avatar::class, 'avatar_id');
