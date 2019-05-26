@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index');
+Route::get('recette/{id}', 'RecetteController@find');
+Route::get('recettes', 'RecetteController@show');
+Route::get('categories', 'CategorieController@show');
+Route::get('categorie/{id}', 'CategorieController@find');
+Route::get('users', 'UtilisateurController@show');
+Route::get('user/{id}', 'UtilisateurController@find');
