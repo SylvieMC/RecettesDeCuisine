@@ -12,9 +12,9 @@
 */
 
 Route::get('/', 'IndexController@index');
-Route::get('recette/{id}', 'RecetteController@find');
-Route::get('recettes', 'RecetteController@show');
-Route::get('categories', 'CategorieController@show');
-Route::get('categorie/{id}', 'CategorieController@find');
-Route::get('users', 'UtilisateurController@show');
-Route::get('user/{id}', 'UtilisateurController@find');
+Route::get('recettes/{id}', 'RecetteController@show');
+Route::get('recettes', 'RecetteController@index');
+Route::get('categories', 'CategorieController@index');
+Route::get('categories/{id}', 'CategorieController@show');
+Route::get('users', 'UtilisateurController@index');
+Route::get('users/{id}', 'UtilisateurController@show');
