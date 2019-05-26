@@ -1,5 +1,5 @@
 <template>
-    <div class='categorie'>
+    <div class='categories'>
     	<div v-for="categorie in categories" :key="categorie.id">
         	<p>{{ categorie.nom }}</p>
         </div>
