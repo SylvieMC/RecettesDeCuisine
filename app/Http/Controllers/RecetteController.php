@@ -14,8 +14,8 @@ class RecetteController extends Controller
      */
     public function index()
     {
-        $recettes = Recette::findAll();
-        return view('recettes', ["recettes"=>$recettes]);
+        $recettes = Recette::All();
+        return view('recettes', ["recettes" => $recettes]);
     }
 
     /**

@@ -10,6 +10,7 @@
     <body>
         <div id="app">
             <heading></heading>
+            <recette :recettes="{{ $recettes }}"></recette>
             <bottom></bottom>
         </div>
         <script src="{{ mix('js/app.js') }}" defer></script>
