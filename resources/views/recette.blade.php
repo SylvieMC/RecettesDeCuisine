@@ -10,7 +10,7 @@
     <body>
         <div id="app">
             <heading></heading>
-            <recette :recette="{{ $recette }}"></recette>
+            <recette :recette="{{ $recette }}" :utilisateur="{{ $utilisateur }}"></recette>
             <bottom></bottom>
         </div>
         <script src="{{ mix('js/app.js') }}" defer></script>

@@ -2,7 +2,8 @@
     <div class='recettes'>    	
         	<p>
             {{ recette.nom }}<br/>
-            {{ recette.description }}
+            {{ recette.description }}<br/>
+            {{ utilisateur.pseudo }}
             </p>
     </div>
 </template>
@@ -10,6 +11,6 @@
 <script>
     export default 
     {
-    	props: ['recette']
+    	props: ['recette','utilisateur']
     }
 </script>

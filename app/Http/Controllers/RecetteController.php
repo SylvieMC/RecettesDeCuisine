@@ -15,7 +15,10 @@ class RecetteController extends Controller
     public function index()
     {
         $recettes = Recette::All();
-        return view('recettes', ["recettes" => $recettes]);
+        $utilisateur = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
+            ->select('utilisateurs.pseudo')
+            ->get();
+        return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateur]);
     }
 
     /**
@@ -48,7 +51,10 @@ class RecetteController extends Controller
     public function show($id)
     {
         $recette = Recette::findOrFail($id);
-        return view('recette', ["recette" => $recette]);
+        $utilisateur = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
+            ->select('utilisateurs.pseudo')
+            ->get();
+        return view('recette', ["recette" => $recette, "utilisateur"=>$utilisateur]);
     }
 
     /**
