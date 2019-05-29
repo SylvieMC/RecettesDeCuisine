@@ -49518,7 +49518,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('heading', __webpack_require__(/*! ./components/Heading.vue */ "./resources/js/components/Heading.vue")["default"]);
 Vue.component('bottom', __webpack_require__(/*! ./components/Bottom.vue */ "./resources/js/components/Bottom.vue")["default"]);
 Vue.component('recette', __webpack_require__(/*! ./components/Recette.vue */ "./resources/js/components/Recette.vue")["default"]);
+<<<<<<< HEAD
 Vue.component('recettes', __webpack_require__(/*! ./components/Recettes.vue */ "./resources/js/components/Recettes.vue")["default"]);
+=======
+>>>>>>> 0a1b18526d846a21f163c42fe57b694b5ce7c6cf
 Vue.component('categorie', __webpack_require__(/*! ./components/Categorie.vue */ "./resources/js/components/Categorie.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to

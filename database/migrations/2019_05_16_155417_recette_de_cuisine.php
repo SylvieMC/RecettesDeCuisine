@@ -46,7 +46,7 @@ class RecetteDeCuisine extends Migration
 
             $table->increments('id');
             $table->timestamps();
-            $table->unsignedInteger('nom');
+            $table->string('nom',255);
             $table->string('description', 255);
         });
 
