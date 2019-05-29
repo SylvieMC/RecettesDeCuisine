@@ -15,10 +15,10 @@ class RecetteController extends Controller
     public function index()
     {
         $recettes = Recette::All();
-        $utilisateur = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
+        $utilisateurs = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
             ->select('utilisateurs.pseudo')
             ->get();
-            return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateur]);
+            return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs]);
     }
 
     /**
@@ -53,6 +53,7 @@ class RecetteController extends Controller
         $recette = Recette::findOrFail($id);
         $utilisateur = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
             ->select('utilisateurs.pseudo')
+            ->where('recettes.id',$id)
             ->get();
         return view('recette', ["recette" => $recette, "utilisateur" => $utilisateur]);
     }

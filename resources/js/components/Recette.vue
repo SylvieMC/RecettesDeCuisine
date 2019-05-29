@@ -3,8 +3,8 @@
         	<p>
             {{ recette.nom }}<br/>
             {{ recette.description }}<br/>
+            {{ utilisateur.pseudo }}
             </p>
-            <p v-for="user in utilisateur">{{ user.pseudo }}</p>
     </div>
 </template>
 

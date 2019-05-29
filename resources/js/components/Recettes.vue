@@ -1,8 +1,10 @@
 
 <template>
     <div class='recettes'>
-    	<div v-for="recette in recettes" :key="recette.id">
+    	<div v-for="recette, index in recettes" :key="recette.id">
         	<p>{{ recette.nom }}</p>
+            <p>{{ recette.description }}</p>
+            <p>{{ utilisateurs[index].pseudo }}</p>
         </div>
     </div>
 </template>
@@ -10,6 +12,6 @@
 <script>
     export default 
     {
-    	props: ['recettes']
+    	props: ['recettes','utilisateurs']
     }
 </script>
