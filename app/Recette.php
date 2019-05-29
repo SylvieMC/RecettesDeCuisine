@@ -15,12 +15,12 @@ class Recette extends Model
 
     public function utilisateur()
     {
-        return $this->belongsTo(Utilisateur::class, 'utilisateur_id');
+        return $this->belongsTo(Utilisateur::class, 'id');
     }
 
     public function etapes()
     {
-        return $this->hasMany(Etape::class, 'recette_id');
+        return $this->hasMany(Etape::class, 'id');
     }
 
     public function ingredients()

@@ -10,6 +10,6 @@ class Etape extends Model
 
     public function recette()
     {
-        return $this->belongsTo(Recette::class, 'recette_id');
+        return $this->belongsTo(Recette::class, 'id');
     }
 }

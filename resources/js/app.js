@@ -23,6 +23,7 @@ Vue.component('heading', require('./components/Heading.vue').default);
 Vue.component('bottom', require('./components/Bottom.vue').default);
 Vue.component('recette', require('./components/Recette.vue').default);
 Vue.component('categorie', require('./components/Categorie.vue').default);
+Vue.component('utilisateurs', require('./components/Utilisateurs.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

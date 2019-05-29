@@ -10,7 +10,7 @@ class Utilisateur extends Model
 
     public function avatar()
     {
-        return $this->hasOne(Avatar::class, 'avatar_id');
+        return $this->hasOne(Avatar::class, 'id');
     }
 
     public function recettes()

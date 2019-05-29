@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Avatar;
 use App\Utilisateur;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,13 @@ class UtilisateurController extends Controller
      */
     public function index()
     {
-        //
+        $utilisateurs = Utilisateur::All();
+        /*$avatars = $utilisateurs->avatar();
+        print_r($avatars);*/
+        $users = Utilisateur::join('avatars', 'utilisateurs.avatar_id', '=', 'avatars.id')
+            ->select('avatars.lien_image')
+            ->get();
+        return view('utilisateurs', ["utilisateurs" => $utilisateurs]);
     }
 
     /**
