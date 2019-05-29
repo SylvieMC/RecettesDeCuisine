@@ -1,14 +1,15 @@
 <template>
-    <div class='recettes'>
-    	<div v-for="recette in recettes" :key="recette.id">
-        	<p>{{ recette.nom }}</p>
-        </div>
+    <div class='recettes'>    	
+        	<p>
+            {{ recette.nom }}<br/>
+            {{ recette.description }}
+            </p>
     </div>
 </template>
 
 <script>
     export default 
     {
-    	props: ['recettes']
+    	props: ['recette']
     }
 </script>

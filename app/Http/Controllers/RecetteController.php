@@ -47,7 +47,8 @@ class RecetteController extends Controller
      */
     public function show($id)
     {
-        //
+        $recette = Recette::findOrFail($id);
+        return view('recette', ["recette" => $recette]);
     }
 
     /**
