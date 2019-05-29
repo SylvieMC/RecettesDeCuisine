@@ -16,5 +16,5 @@ Route::get('recettes/{id}', 'RecetteController@show');
 Route::get('recettes', 'RecetteController@index');
 Route::get('categories', 'CategorieController@index');
 Route::get('categories/{id}', 'CategorieController@show');
-Route::get('users', 'UtilisateurController@index');
-Route::get('users/{id}', 'UtilisateurController@show');
+Route::get('utilisateurs', 'UtilisateurController@index');
+Route::get('utilisateurs/{id}', 'UtilisateurController@show');

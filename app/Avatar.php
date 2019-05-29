@@ -11,7 +11,7 @@ class Avatar extends Model
 	
     public function utilisateur()
     {
-        return $this->belongsTo(Utilisateur::class, 'avatar_id');
+        return $this->belongsTo(Utilisateur::class, 'id');
     }
 
     public static function getAvatar()
