@@ -28,10 +28,10 @@ class DatabaseSeeder extends Seeder
             );
         }
         factory(Utilisateur::class, 20)->create();
+        factory(Recette::class, 20)->create();
     	factory(Categorie::class, 6)->create();
     	factory(Etape::class, 80)->create();
     	factory(Ingredient::class, 40)->create();
-    	factory(Recette::class, 20)->create();
     	factory(IngredientRecette::class, 120)->create();
 
     	$categoriesIds = DB::table('categories')->pluck('id')->toArray();
