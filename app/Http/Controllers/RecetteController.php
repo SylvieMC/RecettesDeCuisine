@@ -18,7 +18,11 @@ class RecetteController extends Controller
         $utilisateurs = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
             ->select('utilisateurs.pseudo')
             ->get();
-            return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs]);
+        $categories = Recette::join('categories_recettes', 'recettes.id', '=', 'categories_recettes.recette_id')
+            ->join('categories', 'categories.id', '=', 'categories_recettes.categorie_id')
+            ->select('categories.nom')
+            ->get(); 
+            return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs,"categories"=> $categories]);
     }
 
     /**
@@ -55,7 +59,21 @@ class RecetteController extends Controller
             ->select('utilisateurs.pseudo')
             ->where('recettes.id',$id)
             ->get();
-        return view('recette', ["recette" => $recette, "utilisateur" => $utilisateur]);
+        $categorie = Recette::join('categories_recettes', 'recettes.id', '=', 'categories_recettes.recette_id')
+            ->join('categories', 'categories.id', '=', 'categories_recettes.categorie_id')
+            ->select('categories.nom')
+            ->where('recettes.id',$id)
+            ->get();
+        $etapes = Recette::join('etapes', 'recettes.id', '=', 'etapes.recette_id')
+            ->select('etapes.description')
+            ->where('recettes.id',$id)
+            ->get(); 
+        $ingredients = Recette::join('ingredients_recettes', 'recettes.id', '=', 'ingredients_recettes.recette_id')
+            ->join('ingredients', 'ingredients.id', '=', 'ingredients_recettes.ingredient_id')
+            ->select('ingredients.nom')
+            ->where('recettes.id',$id)
+            ->get();  
+        return view('recette', ["recette" => $recette, "utilisateur" => $utilisateur,"categorie"=> $categorie, "ingredients"=>$ingredients,"etapes"=>$etapes]);
     }
 
     /**

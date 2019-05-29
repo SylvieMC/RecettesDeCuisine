@@ -5,6 +5,9 @@
         	<p>{{ recette.nom }}</p>
             <p>{{ recette.description }}</p>
             <p>{{ utilisateurs[index].pseudo }}</p>
+            <p>
+                {{ categories }}
+            </p>
         </div>
     </div>
 </template>
@@ -12,6 +15,6 @@
 <script>
     export default 
     {
-    	props: ['recettes','utilisateurs']
+    	props: ['recettes','utilisateurs','categories']
     }
 </script>

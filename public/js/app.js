@@ -1871,8 +1871,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['recette', 'utilisateur']
+  props: ['recette', 'utilisateur', 'categorie', 'ingredients', 'etapes']
 });
 
 /***/ }),
@@ -1897,8 +1907,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['recettes', 'utilisateurs']
+  props: ['recettes', 'utilisateurs', 'categories']
 });
 
 /***/ }),
@@ -37339,15 +37352,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "recettes" }, [
-    _c("p", [
-      _vm._v("\n        " + _vm._s(_vm.recette.nom)),
-      _c("br"),
-      _vm._v("\n        " + _vm._s(_vm.recette.description)),
-      _c("br"),
-      _vm._v(_vm._s(_vm.utilisateur) + "\n        ")
-    ])
-  ])
+  return _c(
+    "div",
+    { staticClass: "recettes" },
+    [
+      _c("p", [
+        _vm._v("\n        " + _vm._s(_vm.recette.nom)),
+        _c("br"),
+        _vm._v("\n        " + _vm._s(_vm.recette.description)),
+        _c("br"),
+        _vm._v("\n        " + _vm._s(_vm.utilisateur.pseudo)),
+        _c("br")
+      ]),
+      _vm._l(_vm.categorie, function(categories) {
+        return _c("p", [
+          _vm._v("\n            " + _vm._s(categories.nom) + "\n        ")
+        ])
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.ingredients, function(ingredient) {
+        return _c("p", [
+          _vm._v("\n            " + _vm._s(ingredient.nom) + "\n        ")
+        ])
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.etapes, function(etape) {
+        return _c("p", [
+          _vm._v("\n            " + _vm._s(etape.description) + "\n        ")
+        ])
+      }),
+      _vm._v(" "),
+      _c("p")
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37380,7 +37418,11 @@ var render = function() {
         _vm._v(" "),
         _c("p", [_vm._v(_vm._s(recette.description))]),
         _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.utilisateurs[index].pseudo))])
+        _c("p", [_vm._v(_vm._s(_vm.utilisateurs[index].pseudo))]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v("\n            " + _vm._s(_vm.categories) + "\n        ")
+        ])
       ])
     }),
     0
@@ -50099,8 +50141,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\coursAPI\recettes-de-cuisine\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\coursAPI\recettes-de-cuisine\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Programmes\wamp\www\recettes\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Programmes\wamp\www\recettes\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
