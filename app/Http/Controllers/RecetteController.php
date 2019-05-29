@@ -18,7 +18,7 @@ class RecetteController extends Controller
         $utilisateur = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
             ->select('utilisateurs.pseudo')
             ->get();
-        return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateur]);
+            return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateur]);
     }
 
     /**
@@ -54,7 +54,7 @@ class RecetteController extends Controller
         $utilisateur = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
             ->select('utilisateurs.pseudo')
             ->get();
-        return view('recette', ["recette" => $recette, "utilisateur"=>$utilisateur]);
+        return view('recette', ["recette" => $recette, "utilisateur" => $utilisateur]);
     }
 
     /**

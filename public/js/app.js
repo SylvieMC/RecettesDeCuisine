@@ -37338,15 +37338,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "recettes" }, [
-    _c("p", [
-      _vm._v("\n        " + _vm._s(_vm.recette.nom)),
-      _c("br"),
-      _vm._v("\n        " + _vm._s(_vm.recette.description)),
-      _c("br"),
-      _vm._v("\n        " + _vm._s(_vm.utilisateur.pseudo) + "\n        ")
-    ])
-  ])
+  return _c(
+    "div",
+    { staticClass: "recettes" },
+    [
+      _c("p", [
+        _vm._v("\n        " + _vm._s(_vm.recette.nom)),
+        _c("br"),
+        _vm._v("\n        " + _vm._s(_vm.recette.description)),
+        _c("br")
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.utilisateur, function(user) {
+        return _c("p", [_vm._v(_vm._s(user.pseudo))])
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50094,8 +50102,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\coursAPI\recettes-de-cuisine\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\coursAPI\recettes-de-cuisine\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Programmes\wamp\www\recettes\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Programmes\wamp\www\recettes\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
