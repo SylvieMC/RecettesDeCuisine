@@ -24,15 +24,15 @@ class IngredientRecetteController extends Controller
      */
     public function create()
     {
-        $roles = Utilisateur::select('utilisateurs.role')
-            ->distinct()
+        $categories = IngredientRecette::join('categories', 'IngredientRecette.categorie_id', '=', 'categories.id')
+            ->select('categories.nom')
+            ->addSelect('categories.id')
             ->get();
-        $avatars = Utilisateur::join('avatars', 'utilisateurs.avatar_id', '=', 'avatars.id')
-            ->select('avatars.url')
-            ->addSelect('avatars.id')
-            ->distinct()
+        $recettes = IngredientRecette::join('recettes', 'IngredientRecette.recette_id', '=', 'recettes.id')
+            ->select('recettes.nom')
+            ->addSelect('recettes.id')
             ->get();
-        return view('utilisateurs.create',["roles" => $roles, "avatars" => $avatars]);
+        return view('ingredientRecettes.create',["categories" => $categories, "recettes" => $recettes]);
     }
 
     /**
@@ -43,7 +43,20 @@ class IngredientRecetteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'quantite'=>'required|String|max:255',
+            'unite'=>'required|String|max:255',
+            'ingredient_id'=>'required|integer|min:0',
+            'recette_id'=>'required|integer|min:0',
+        ]);
+
+        $utilisateur = new Utilisateur([
+            'pseudo' => $request->get('pseudo'),
+            'role' => $request->get('role'),
+            'avatar_id' => $request->get('avatar'),
+        ]);
+        $utilisateur->save();
+        return redirect('/')->with('success', 'Utilisateur saved!');
     }
 
     /**
