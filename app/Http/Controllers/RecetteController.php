@@ -42,7 +42,7 @@ class RecetteController extends Controller
     {
         $utilisateurs = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
             ->select('utilisateurs.pseudo')
-            ->distinct()
+            ->addSelect('utilisateurs.id')
             ->get();
         return view('recettes.create',["utilisateurs" => $utilisateurs]);
     }
@@ -55,7 +55,25 @@ class RecetteController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nom'=>'required|String|max:255',
+            'description'=>'required|String|max:255',
+            'image'=>'required|String|max:255',
+            'temps'=>'required|integer|min:1',
+            'portions'=>'required|integer|min:1',
+            'createur'=>'required|integer',
+        ]);
 
+        $recette = new Recette([
+            'nom' => $request->get('nom'),
+            'description' => $request->get('description'),
+            'image' => $request->get('image'),
+            'temps_preparation' => $request->get('temps'),
+            'nombre_portion' => $request->get('portions'),
+            'utilisateur_id' => $request->get('createur'),
+        ]);
+        $recette->save();
+        return redirect('/')->with('success', 'Recette saved!');
     }
 
     /**
@@ -96,9 +114,14 @@ class RecetteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, Recette $recette)
+    public function edit(Request $request, $id)
     {
-
+        $recette = Recette::find($id);
+        $utilisateurs = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
+            ->select('utilisateurs.pseudo')
+            ->addSelect('utilisateurs.id')
+            ->get();
+        return view('recettes.edit', ["recette" => $recette, "utilisateurs" => $utilisateurs]);
     }
 
     /**
@@ -110,7 +133,25 @@ class RecetteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nom'=>'required|String|max:255',
+            'description'=>'required|String|max:255',
+            'image'=>'required|String|max:255',
+            'temps'=>'required|integer|min:1',
+            'portions'=>'required|integer|min:1',
+            'createur'=>'required|integer',
+        ]);
 
+        $recette = Recette::find($id);
+        $recette->nom =  $request->get('nom');
+        $recette->description = $request->get('description');
+        $recette->image = $request->get('image');
+        $recette->temps_preparation =  $request->get('temps');
+        $recette->nombre_portion = $request->get('portions');
+        $recette->utilisateur_id = $request->get('createur');
+        $recette->save();
+
+        return redirect('recettes/'.$id)->with('success', 'Recette updated!');
     }
 
     /**
@@ -119,8 +160,13 @@ class RecetteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recette $recette)
+    public function destroy($id)
     {
+
+        $recette = Recette::find($id);
+        $recette->delete();
+
+        return redirect('/')->with('success', 'Recette supprimée!');
 
     }
 }

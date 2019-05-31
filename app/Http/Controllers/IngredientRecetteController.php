@@ -24,7 +24,15 @@ class IngredientRecetteController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Utilisateur::select('utilisateurs.role')
+            ->distinct()
+            ->get();
+        $avatars = Utilisateur::join('avatars', 'utilisateurs.avatar_id', '=', 'avatars.id')
+            ->select('avatars.url')
+            ->addSelect('avatars.id')
+            ->distinct()
+            ->get();
+        return view('utilisateurs.create',["roles" => $roles, "avatars" => $avatars]);
     }
 
     /**

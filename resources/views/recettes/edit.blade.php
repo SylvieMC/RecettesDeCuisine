@@ -18,26 +18,34 @@
             @method('PUT') 
             @csrf
             <div class="form-group">    
-              <label for="pseudo">Pseudo :</label>
-              <input type="text" class="form-control" name="pseudo"/>
-              </div>
-              <div class="form-group">
-              <label for="role">Rôle de l'utilisateur :</label>
-              <select name="role" id="role">
-                @foreach ($roles as $role)
-                <option value="{{$role->role}}">{{$role->role}}</option>
-                @endforeach
-              </select>  
-              </div>  
-
-              <div class="form-group">
-              <label for="avatar">Avatar de l'utilisateur :</label>
-              <select name="avatar" id="avatar">
-                @foreach ($avatars as $avatar)
-                <option value="{{$avatar->id}}">{{$avatar->url}}</option>
-                @endforeach
-              </select>  
+              <label for="nom">Nom :</label>
+              <input type="text" class="form-control" name="nom"/>
             </div>
+            <div class="form-group">    
+                <label for="description">Description :</label>
+                <input type="text" class="form-control" name="description"/>
+            </div>
+            <div class="form-group">    
+                <label for="image">URL :</label>
+                <input type="text" class="form-control" name="image"/>
+            </div> 
+            <div class="form-group">    
+                <label for="temps">temps de preparation en minutes :</label>
+                <input type="number" id="temps" name="temps" min="1" max="1000">
+            </div>
+            <div class="form-group">    
+                <label for="portions">Nombre de portions :</label>
+                <input type="number" id="portions" name="portions" min="1" max="100">
+            </div> 
+
+            <div class="form-group">
+            <label for="createur">Créateur :</label>
+            <select name="createur" id="createur">
+              @foreach ($utilisateurs as $utilisateur)
+              <option value="{{$utilisateur->id}}">{{$utilisateur->pseudo}}</option>
+              @endforeach
+            </select>  
+            </div> 
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

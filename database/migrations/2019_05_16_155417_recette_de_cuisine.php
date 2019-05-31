@@ -17,7 +17,7 @@ class RecetteDeCuisine extends Migration
 
             $table->increments('id');
             $table->timestamps();
-            $table->string('url', 255);
+            $table->string('url', 255)->nullable();
         });
 
         Schema::create('utilisateurs', function (Blueprint $table) {
@@ -36,7 +36,7 @@ class RecetteDeCuisine extends Migration
             $table->timestamps();
             $table->string('nom', 255);
             $table->string('description', 255);
-            $table->string('image', 255);
+            $table->string('image', 255)->nullable();
             $table->unsignedInteger('temps_preparation');
             $table->unsignedInteger('nombre_portion');
             $table->unsignedInteger('utilisateur_id')->nullable();

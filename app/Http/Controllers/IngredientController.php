@@ -24,7 +24,7 @@ class IngredientController extends Controller
      */
     public function create()
     {
-        //
+        return view('ingredients.create');
     }
 
     /**
@@ -35,7 +35,15 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom'=>'required|String|max:255',
+        ]);
+
+        $ingredient = new Ingredient([
+            'nom' => $request->get('nom'),
+        ]);
+        $ingredient->save();
+        return redirect('/')->with('success', 'Ingrédient saved!');
     }
 
     /**
@@ -57,7 +65,8 @@ class IngredientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ingredient = Ingredient::find($id);
+        return view('ingredients.edit', ["ingredient" => $ingredient]);
     }
 
     /**
@@ -69,7 +78,15 @@ class IngredientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nom'=>'required|String|max:255',
+        ]);
+
+        $ingredient = Ingredient::find($id);
+        $ingredient->nom =  $request->get('nom');
+        $ingredient->save();
+
+        return redirect('/')->with('success', 'Ingrédient updated!');
     }
 
     /**
@@ -80,6 +97,9 @@ class IngredientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ingredient = Ingredient::find($id);
+        $ingredient->delete();
+
+        return redirect('/')->with('success', 'Ingredient supprimé!');
     }
 }

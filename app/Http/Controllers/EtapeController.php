@@ -24,7 +24,11 @@ class EtapeController extends Controller
      */
     public function create()
     {
-        //
+        $recettes = Etape::join('recettes', 'etapes.recette_id', '=', 'recettes.id')
+            ->select('recettes.nom')
+            ->addSelect('recettes.id')
+            ->get();
+        return view('etapes.create',["recettes" => $recettes]);
     }
 
     /**
@@ -35,7 +39,19 @@ class EtapeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'numero'=>'required|integer|min:1',
+            'description'=>'required|String|max:255',
+            'recette'=>'required|integer',
+        ]);
+
+        $etape = new Etape([
+            'numero' => $request->get('numero'),
+            'description' => $request->get('description'),
+            'recette_id' => $request->get('recette'),
+        ]);
+        $etape->save();
+        return redirect('/')->with('success', 'Etape saved!');
     }
 
     /**
@@ -57,7 +73,12 @@ class EtapeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $etape = Etape::find($id);
+        $recettes = Etape::join('recettes', 'etapes.recette_id', '=', 'recettes.id')
+            ->select('recettes.nom')
+            ->addSelect('recettes.id')
+            ->get();
+        return view('etapes.edit', ["etape" => $etape, "recettes" => $recettes]);
     }
 
     /**
@@ -69,7 +90,19 @@ class EtapeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'numero'=>'required|integer|min:1',
+            'description'=>'required|String|max:255',
+            'recette'=>'required|integer',
+        ]);
+
+        $etape = Etape::find($id);
+        $etape->numero =  $request->get('numero');
+        $etape->description = $request->get('description');
+        $etape->recette_id = $request->get('recette');
+        $etape->save();
+
+        return redirect('/')->with('success', 'Etape updated!');
     }
 
     /**
@@ -80,6 +113,9 @@ class EtapeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $etape = Etape::find($id);
+        $etape->delete();
+
+        return redirect('/')->with('success', 'étape supprimée!');
     }
 }
