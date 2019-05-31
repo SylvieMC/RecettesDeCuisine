@@ -29,7 +29,15 @@ class UtilisateurController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Utilisateur::select('utilisateurs.role')
+            ->distinct()
+            ->get();
+        $avatars = Utilisateur::join('avatars', 'utilisateurs.avatar_id', '=', 'avatars.id')
+            ->select('avatars.url')
+            ->addSelect('avatars.id')
+            ->distinct()
+            ->get();
+        return view('utilisateurs.create',["roles" => $roles, "avatars" => $avatars]);
     }
 
     /**
@@ -40,7 +48,20 @@ class UtilisateurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'pseudo'=>'required|String|max:255',
+            'role'=>'required|String|max:255',
+            'avatar'=>'required|integer|min:0',
+        ]);
+
+        $utilisateur = new Utilisateur([
+            'pseudo' => $request->get('pseudo'),
+            'role' => $request->get('role'),
+            'avatar_id' => $request->get('avatar'),
+        ]);
+        $utilisateur->save();
+        return redirect('/')->with('success', 'Utilisateur saved!');
     }
 
     /**
@@ -74,7 +95,16 @@ class UtilisateurController extends Controller
      */
     public function edit($id)
     {
-        //
+        $utilisateur = Utilisateur::find($id);
+        $roles = Utilisateur::select('utilisateurs.role')
+            ->distinct()
+            ->get();
+        $avatars = Utilisateur::join('avatars', 'utilisateurs.avatar_id', '=', 'avatars.id')
+            ->select('avatars.url')
+            ->addSelect('avatars.id')
+            ->distinct()
+            ->get();
+        return view('utilisateurs.edit', ["utilisateur" => $utilisateur, "roles" => $roles, "avatars" => $avatars]);
     }
 
     /**
@@ -86,7 +116,19 @@ class UtilisateurController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'pseudo'=>'required|String|max:255',
+            'role'=>'required|String|max:255',
+            'avatar'=>'required|Integer',
+        ]);
+
+        $utilisateur = Utilisateur::find($id);
+        $utilisateur->pseudo =  $request->get('pseudo');
+        $utilisateur->role = $request->get('role');
+        $utilisateur->avatar_id = $request->get('avatar');
+        $utilisateur->save();
+
+        return redirect('utilisateurs/'.$id)->with('success', 'Utilisateur updated!');
     }
 
     /**
@@ -97,6 +139,9 @@ class UtilisateurController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $utilisateur = Utilisateur::find($id);
+        $utilisateur->delete();
+
+        return redirect('/')->with('success', 'Utilisateur supprimé!');
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Utilisateur extends Model
 {
 	protected $table = 'utilisateurs';
+	protected $fillable = ['pseudo','role'];
 
     public function avatar()
     {

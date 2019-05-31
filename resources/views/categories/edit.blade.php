@@ -18,7 +18,6 @@
             @method('PUT') 
             @csrf
             <div class="form-group">
-
                 <label for="nom">Nom :</label>
                 <input type="text" class="form-control" name="nom" value={{ $categorie->nom }} />
             </div>
