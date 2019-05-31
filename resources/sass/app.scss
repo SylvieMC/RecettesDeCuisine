@@ -98,7 +98,10 @@ section.resume-section {
 section.resume-section .resume-item .resume-date {
   min-width: none;
 }
-
+.resume-item{
+  padding-bottom: 3rem;
+  border-bottom: solid #ccc 1px;
+}
 @media (min-width: 768px) {
   section.resume-section {
     min-height: 100vh;
@@ -129,4 +132,14 @@ a {
 
 a:hover, a:focus, a:active {
   color: #824027;
+}
+.profile-picture{
+  height: 4.2rem;
+  width: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+footer{
+  margin-top: 1rem;
 }
