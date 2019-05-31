@@ -17,7 +17,7 @@ class RecetteDeCuisine extends Migration
 
             $table->increments('id');
             $table->timestamps();
-            $table->string('lien_image', 255);
+            $table->string('url', 255);
         });
 
         Schema::create('utilisateurs', function (Blueprint $table) {

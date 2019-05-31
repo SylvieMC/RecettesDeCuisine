@@ -16,10 +16,8 @@ class UtilisateurController extends Controller
     public function index()
     {
         $utilisateurs = Utilisateur::All();
-        /*$avatars = $utilisateurs->avatar();
-        print_r($avatars);*/
         $users = Utilisateur::join('avatars', 'utilisateurs.avatar_id', '=', 'avatars.id')
-            ->select('avatars.lien_image')
+            ->select('avatars.url')
             ->get();
         return view('utilisateurs', ["utilisateurs" => $utilisateurs]);
     }
@@ -53,7 +51,18 @@ class UtilisateurController extends Controller
      */
     public function show($id)
     {
-        //
+        $utilisateur = Utilisateur::findOrFail($id);
+        $avatar = Utilisateur::join('avatars', 'utilisateurs.avatar_id', '=', 'avatars.id')
+            ->select('avatars.url')
+            ->where('utilisateurs.id',$id)
+            ->get();
+        $recettes = Utilisateur::join('recettes', 'utilisateurs.id', '=', 'recettes.utilisateur_id')
+            ->select('recettes.nom')
+            ->addSelect('recettes.description')
+            ->addSelect('recettes.id')
+            ->where('utilisateurs.id',$id)
+            ->get();
+        return view('utilisateur', ["utilisateur" => $utilisateur, "avatar" => $avatar, "recettes" => $recettes]);
     }
 
     /**

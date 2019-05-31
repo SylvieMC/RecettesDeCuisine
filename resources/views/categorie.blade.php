@@ -3,7 +3,7 @@
 @section('main')
         <div id="app">
             <heading></heading>
-            <categorie :categories="{{ $categories }}"></categorie>
+            <categorie :categorie="{{ $categorie }}" :recettes="{{ $recettes }}"></categorie>
             <bottom></bottom>
         </div>
 @endsection

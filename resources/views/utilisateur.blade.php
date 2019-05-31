@@ -3,7 +3,7 @@
 @section('main')
         <div id="app">
             <heading></heading>
-            <utilisateurs :utilisateurs="{{ $utilisateurs }}"></utilisateurs>
+            <utilisateur :utilisateur="{{ $utilisateur }}" :avatar="{{ $avatar }}" :recettes="{{ $recettes }}" ></utilisateur>
             <bottom></bottom>
         </div>
 @endsection
