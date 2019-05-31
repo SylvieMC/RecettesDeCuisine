@@ -20,8 +20,11 @@ Route::put('recettes/edit/{recette}', 'RecetteController@edit');
 Route::delete('recettes/delete/{recette}', 'RecetteController@destroy');
 
 Route::get('categories/{id}', 'CategorieController@show');
-Route::post('categories', 'CategorieController@store');
+Route::post('categories', 'CategorieController@store')->name('categorie.store');
 Route::get('categorie/create', 'CategorieController@create');
+Route::get('categories/edit/{id}', 'CategorieController@edit');
+Route::put('categorie/{id}', 'CategorieController@update')->name('categorie.update');
+Route::delete('categorie/{id}', 'CategorieController@destroy')->name('categorie.destroy');;
 
 Route::get('utilisateurs/{id}', 'UtilisateurController@show');
 

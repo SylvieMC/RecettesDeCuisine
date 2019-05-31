@@ -9,7 +9,9 @@
 	  	<title>Recette de cuisine</title>
 	</head>
 	<body>
-	    @yield('main')
+		<div id="app">
+	    	@yield('main')
+	    </div>	
 	<script src="{{ mix('js/app.js') }}" defer></script>
 	</body>
 </html>

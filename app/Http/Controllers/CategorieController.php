@@ -75,7 +75,8 @@ class CategorieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categorie = Categorie::find($id);
+        return view('categories.edit', compact('categorie'));
     }
 
     /**
@@ -87,7 +88,17 @@ class CategorieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nom'=>'required|string|max:255',
+            'description'=>'required|string|max:255',
+        ]);
+
+        $categorie = Categorie::find($id);
+        $categorie->nom =  $request->get('nom');
+        $categorie->description = $request->get('description');
+        $categorie->save();
+
+        return redirect('categories/'.$id)->with('success', 'Category updated!');
     }
 
     /**
@@ -98,6 +109,9 @@ class CategorieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categorie = Categorie::find($id);
+        $categorie->delete();
+
+        return redirect('/')->with('success', 'Categorie supprimée!');
     }
 }
