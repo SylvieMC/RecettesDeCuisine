@@ -1793,6 +1793,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categorie', 'recettes']
 });
@@ -1922,6 +1939,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['recette', 'utilisateur', 'categorie', 'ingredients', 'etapes']
 });
@@ -1937,9 +1978,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -37312,8 +37350,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("footer", { attrs: { id: "footer" } }, [
-      _c("p", [_vm._v("Texte du footer")])
+    return _c("footer", { attrs: { id: "footer", align: "center" } }, [
+      _c("p", [
+        _vm._v("Copyright © Sylvie et Kevin 2018 | Tous droits réservés")
+      ])
     ])
   }
 ]
@@ -37342,18 +37382,46 @@ var render = function() {
     "div",
     { staticClass: "categories" },
     [
-      _c("p", [_vm._v(_vm._s(_vm.categorie.nom))]),
+      _c("h2", { staticClass: "mb-5" }, [_vm._v(_vm._s(_vm.categorie.nom))]),
       _vm._v(" "),
       _vm._l(_vm.recettes, function(recette) {
-        return _c("div", [
-          _c("img", { attrs: { src: recette.image, alt: recette.nom } }),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "/recettes/" + recette.id } }, [
-            _vm._v(_vm._s(recette.nom))
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(recette.description))])
-        ])
+        return _c(
+          "div",
+          { staticClass: "resume-item d-flex flex-column flex-md-row mb-5" },
+          [
+            _c("div", { staticClass: "col-lg-3" }, [
+              _c("a", { attrs: { href: "/recettes/" + recette.id } }, [
+                _c("img", {
+                  staticClass: "img-thumbnail",
+                  attrs: { src: recette.image, alt: recette.nom }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "resume-content mr-auto" }, [
+              _c("h3", { staticClass: "mb-3" }, [_vm._v(_vm._s(recette.nom))]),
+              _vm._v(" "),
+              _c("p", { staticClass: "mb-3" }, [
+                _vm._v(_vm._s(recette.description))
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-outline-secondary float-right" },
+                [
+                  _c(
+                    "a",
+                    { attrs: { href: "/recettes/" + recette.id, title: "" } },
+                    [
+                      _vm._v("Voir la recette " + _vm._s(recette.nom)),
+                      _c("i", { staticClass: "fa fa-arrow-right" })
+                    ]
+                  )
+                ]
+              )
+            ])
+          ]
+        )
       })
     ],
     2
@@ -37500,42 +37568,86 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "recettes" },
+    { staticClass: "resume-item d-flex flex-column flex-md-row mb-5 col" },
     [
-      _c("img", { attrs: { src: _vm.recette.image, alt: _vm.recette.nom } }),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v("\n    " + _vm._s(_vm.recette.nom)),
-        _c("br"),
-        _vm._v("\n    " + _vm._s(_vm.recette.description)),
-        _c("br")
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "/utilisateurs/" + _vm.utilisateur[0].id } }, [
-        _vm._v(_vm._s(_vm.utilisateur[0].pseudo))
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.categorie, function(categories, index) {
-        return _c("div", { key: categories.id }, [
-          _c("a", { attrs: { href: "/categories/" + categories.id } }, [
-            _vm._v(_vm._s(categories.nom))
+      _c("div", { staticClass: "col-lg-4" }, [
+        _c("img", {
+          staticClass: "img-thumbnail mb-3",
+          attrs: { src: _vm.recette.image, alt: _vm.recette.nom }
+        }),
+        _vm._v(" "),
+        _c("div", [
+          _c("b", [_vm._v("Ingrédients")]),
+          _vm._v(" :"),
+          _c(
+            "ul",
+            _vm._l(_vm.ingredients, function(ingredient) {
+              return _c("li", [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(ingredient.nom) +
+                    "\n            "
+                )
+              ])
+            }),
+            0
+          ),
+          _c("b", [
+            _vm._v(
+              "Temps Total : " + _vm._s(_vm.recette.temps_preparation) + " min"
+            )
           ])
         ])
-      }),
+      ]),
       _vm._v(" "),
-      _vm._l(_vm.ingredients, function(ingredient) {
-        return _c("p", [
-          _vm._v("\n        " + _vm._s(ingredient.nom) + "\n    ")
-        ])
-      }),
-      _vm._v(" "),
-      _vm._l(_vm.etapes, function(etape) {
-        return _c("p", [
-          _vm._v("\n        " + _vm._s(etape.description) + "\n    ")
-        ])
-      })
-    ],
-    2
+      _c(
+        "div",
+        { staticClass: "resume-content mr-auto" },
+        [
+          _c("h2", { staticClass: "mb-0" }, [_vm._v(_vm._s(_vm.recette.nom))]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "subheading mb-3" },
+            [
+              _vm._l(_vm.categorie, function(categories, index) {
+                return _c("span", { key: categories.id }, [
+                  _vm._v("\n                #"),
+                  _c("a", { attrs: { href: "/categories/" + categories.id } }, [
+                    _vm._v(_vm._s(categories.nom))
+                  ])
+                ])
+              }),
+              _vm._v(" - recette de "),
+              _c(
+                "a",
+                { attrs: { href: "/utilisateurs/" + _vm.utilisateur[0].id } },
+                [_vm._v(_vm._s(_vm.utilisateur[0].pseudo))]
+              ),
+              _vm._v(
+                " POUR " + _vm._s(_vm.recette.nombre_portion) + " PERSONNES"
+              )
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c("p", { staticClass: "mb-3" }, [
+            _vm._v(_vm._s(_vm.recette.description))
+          ]),
+          _vm._v(" "),
+          _c("h4", [_vm._v("Préparation")]),
+          _vm._v(" "),
+          _vm._l(_vm.etapes, function(etape) {
+            return _c("ul", { staticClass: "list-group" }, [
+              _c("li", { staticClass: "list-group-item" }, [
+                _vm._v(_vm._s(etape.description))
+              ])
+            ])
+          })
+        ],
+        2
+      )
+    ]
   )
 }
 var staticRenderFns = []
@@ -37564,80 +37676,99 @@ var render = function() {
     "div",
     { staticClass: "recettes" },
     _vm._l(_vm.recettes, function(recette, index) {
-      return _c("div", { key: recette.id }, [
-        _c(
-          "div",
-          { staticClass: "resume-content mr-auto" },
-          [
-            _c(
-              "a",
-              {
-                attrs: { href: "/utilisateurs/" + _vm.utilisateurs[index].id }
-              },
-              [_vm._v(_vm._s(_vm.utilisateurs[index].pseudo))]
-            ),
-            _vm._v(" "),
-            _c("span", { staticClass: "text-primary float-right" }, [
+      return _c(
+        "div",
+        {
+          key: recette.id,
+          staticClass: "resume-item d-flex flex-column flex-md-row mb-5"
+        },
+        [
+          _c("div", { staticClass: "col-lg-3" }, [
+            _c("a", { attrs: { href: "/recettes/" + recette.id } }, [
+              _c("img", {
+                staticClass: "img-thumbnail",
+                attrs: { src: recette.image, alt: recette.nom }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "resume-content mr-auto" },
+            [
+              _c("span", { staticClass: "text-primary float-right" }, [
+                _vm._v("Par "),
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href: "/utilisateurs/" + _vm.utilisateurs[index].id
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.utilisateurs[index].pseudo))]
+                ),
+                _vm._v(
+                  " | " +
+                    _vm._s(recette.temps_preparation) +
+                    " min | Pour " +
+                    _vm._s(recette.nombre_portion) +
+                    " personnes"
+                )
+              ]),
+              _vm._v(" "),
+              _c("h3", { staticClass: "mb-0" }, [_vm._v(_vm._s(recette.nom))]),
+              _vm._v(" "),
+              _vm._l(_vm.categories, function(categorie, indice) {
+                return _c("span", { staticClass: "subheading mb-3" }, [
+                  indice < _vm.count[0].nb
+                    ? _c("span", [
+                        _vm._v("\n                    #"),
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: "/categories/" + _vm.categories[0].id
+                            }
+                          },
+                          [_vm._v(_vm._s(_vm.categories[0].nom))]
+                        ),
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.removeFirstCategory()) +
+                            "\n                "
+                        )
+                      ])
+                    : _vm._e()
+                ])
+              }),
               _vm._v(
-                _vm._s(recette.temps_preparation) +
-                  " min | Pour " +
-                  _vm._s(recette.nombre_portion) +
-                  " personnes"
-              )
-            ]),
-            _vm._v(" "),
-            _c("h3", { staticClass: "mb-0" }, [_vm._v(_vm._s(recette.nom))]),
-            _vm._v(" "),
-            _vm._l(_vm.categories, function(categorie, indice) {
-              return _c("span", { staticClass: "subheading mb-3" }, [
-                indice < _vm.count[0].nb
-                  ? _c("span", [
-                      _vm._v("\n                    #"),
-                      _c(
-                        "a",
-                        {
-                          attrs: { href: "/categories/" + _vm.categories[0].id }
-                        },
-                        [_vm._v(_vm._s(_vm.categories[0].nom))]
-                      ),
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(_vm.removeFirstCategory()) +
-                          "\n                "
-                      )
-                    ])
-                  : _vm._e()
-              ])
-            }),
-            _vm._v(
-              "\n            " +
-                _vm._s(_vm.removeFirstCount()) +
-                "\n            "
-            ),
-            _c("p", { staticClass: "mb-3" }, [
-              _vm._v(_vm._s(recette.description))
-            ]),
-            _vm._v(" "),
-            _c("img", { attrs: { src: recette.image, alt: recette.nom } }),
-            _vm._v(" "),
-            _c("button", { staticClass: "btn btn-outline-secondary" }, [
+                "\n            " +
+                  _vm._s(_vm.removeFirstCount()) +
+                  "\n            "
+              ),
+              _c("p", { staticClass: "mb-3" }, [
+                _vm._v(_vm._s(recette.description))
+              ]),
+              _vm._v(" "),
               _c(
-                "a",
-                { attrs: { href: "/recettes/" + recette.id, title: "" } },
+                "button",
+                { staticClass: "btn btn-outline-secondary float-right" },
                 [
-                  _vm._v("Voir la recette " + _vm._s(recette.nom)),
-                  _c("i", { staticClass: "fa fa-arrow-right" })
+                  _c(
+                    "a",
+                    { attrs: { href: "/recettes/" + recette.id, title: "" } },
+                    [
+                      _vm._v("Voir la recette " + _vm._s(recette.nom)),
+                      _c("i", { staticClass: "fa fa-arrow-right" })
+                    ]
+                  )
                 ]
               )
-            ])
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "resume-date text-md-right" }),
-        _vm._v(" "),
-        _c("hr")
-      ])
+            ],
+            2
+          )
+        ]
+      )
     }),
     0
   )
@@ -50365,8 +50496,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Programmes\wamp\www\recettes\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Programmes\wamp\www\recettes\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\coursAPI\recettes-de-cuisine\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\coursAPI\recettes-de-cuisine\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

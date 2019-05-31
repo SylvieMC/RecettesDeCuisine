@@ -9,11 +9,16 @@
 			    </div>
 			  @endif
 			</div>
-                <form action="{{ route('categorie.destroy', $categorie->id)}}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-danger" type="submit">Delete</button>
+            <section class="resume-section p-3 p-lg-5 d-flex flex-column">
+                <div class="my-auto">
+                    <categorie :categorie="{{ $categorie }}" :recettes="{{ $recettes }}"></categorie>
+                </div>
+                <form action="{{ route('categorie.destroy', $categorie->id)}}" method="post" align="center">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger float-center" type="submit">Supprimer cette categorie</button>
                 </form>
-            <categorie :categorie="{{ $categorie }}" :recettes="{{ $recettes }}"></categorie>
+            </section>
+
             <bottom></bottom>
 @endsection

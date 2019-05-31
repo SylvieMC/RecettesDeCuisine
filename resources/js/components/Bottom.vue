@@ -1,6 +1,6 @@
 <template>
-    <footer id='footer'>
-        <p>Texte du footer</p>
+    <footer id='footer' align="center">
+        <p>Copyright © Sylvie et Kevin 2018 | Tous droits réservés</p>
     </footer>
 </template>
 
