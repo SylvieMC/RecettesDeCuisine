@@ -3,12 +3,12 @@
 @section('main')
             <heading></heading>
             <div class="col-sm-12">
-			  @if(session()->get('success'))
-			    <div class="alert alert-success">
-			      {{ session()->get('success') }}  
-			    </div>
-			  @endif
-			</div>
+      			  @if(session()->get('success'))
+      			    <div class="alert alert-success">
+      			      {{ session()->get('success') }}  
+      			    </div>
+      			  @endif
+      			</div>
             <section class="resume-section p-3 p-lg-5 d-flex flex-column">
                 <div class="my-auto">
                     <categorie :categorie="{{ $categorie }}" :recettes="{{ $recettes }}"></categorie>

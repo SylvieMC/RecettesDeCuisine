@@ -1877,27 +1877,27 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         id: 3,
         title: 'Plat',
-        link: '/categories/4'
+        link: '/categories/5'
       }, {
         id: 4,
         title: 'Spécialité',
-        link: '/categories/7'
+        link: '/categories/1'
       }, {
         id: 5,
         title: 'Dessert',
-        link: '/categories/3'
+        link: '/categories/7'
       }, {
         id: 6,
         title: 'Fruits',
-        link: '/categories/9'
+        link: '/categories/8'
       }, {
         id: 7,
         title: 'Asie',
-        link: '/categories/6'
+        link: '/categories/4'
       }, {
         id: 8,
         title: 'Chocolat',
-        link: '/categories/5'
+        link: '/categories/6'
       }],
       image: {
         id: 1,
@@ -50543,8 +50543,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\coursAPI\recettes-de-cuisine\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\coursAPI\recettes-de-cuisine\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Programmes\wamp\www\recettes\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Programmes\wamp\www\recettes\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

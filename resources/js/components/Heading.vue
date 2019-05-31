@@ -55,32 +55,32 @@
                   {
                       id: 3,
                       title: 'Plat',
-                      link: '/categories/4'
+                      link: '/categories/5'
                   },
                   {
                       id: 4,
                       title: 'Spécialité',
-                      link: '/categories/7'
+                      link: '/categories/1'
                   },
                   {
                       id: 5,
                       title: 'Dessert',
-                      link: '/categories/3'
+                      link: '/categories/7'
                   },
                   {
                       id: 6,
                       title: 'Fruits',
-                      link: '/categories/9'
+                      link: '/categories/8'
                   },
                   {
                       id: 7,
                       title: 'Asie',
-                      link: '/categories/6'
+                      link: '/categories/4'
                   },
                   {
                       id: 8,
                       title: 'Chocolat',
-                      link: '/categories/5'
+                      link: '/categories/6'
                   }
               ],
               image: {
