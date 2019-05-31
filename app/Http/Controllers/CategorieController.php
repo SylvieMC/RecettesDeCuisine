@@ -64,7 +64,7 @@ class CategorieController extends Controller
             ->addSelect('recettes.id')
             ->where('categories.id',$id)
             ->get();
-        return view('categorie', ["categorie" => $categorie, "recettes" => $recettes]);
+        return view('categories.categorie', ["categorie" => $categorie, "recettes" => $recettes]);
     }
 
     /**

@@ -19,7 +19,7 @@ class UtilisateurController extends Controller
         $users = Utilisateur::join('avatars', 'utilisateurs.avatar_id', '=', 'avatars.id')
             ->select('avatars.url')
             ->get();
-        return view('utilisateurs', ["utilisateurs" => $utilisateurs]);
+        return view('utilisateurs.utilisateurs', ["utilisateurs" => $utilisateurs]);
     }
 
     /**
@@ -62,7 +62,7 @@ class UtilisateurController extends Controller
             ->addSelect('recettes.id')
             ->where('utilisateurs.id',$id)
             ->get();
-        return view('utilisateur', ["utilisateur" => $utilisateur, "avatar" => $avatar, "recettes" => $recettes]);
+        return view('utilisateurs.utilisateur', ["utilisateur" => $utilisateur, "avatar" => $avatar, "recettes" => $recettes]);
     }
 
     /**

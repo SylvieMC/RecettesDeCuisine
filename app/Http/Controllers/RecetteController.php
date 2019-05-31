@@ -30,7 +30,7 @@ class RecetteController extends Controller
             ->join('categories_recettes', 'recettes.id', '=', 'categories_recettes.recette_id')
             ->groupBy('categories_recettes.recette_id')
             ->get();
-            return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs,"categories"=> $categories, "nbCategorieParRecette" => $countCategoriesParRecette]);
+            return view('recettes.recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs,"categories"=> $categories, "nbCategorieParRecette" => $countCategoriesParRecette]);
     }
 
     /**
@@ -85,7 +85,7 @@ class RecetteController extends Controller
             ->select('ingredients.nom')
             ->where('recettes.id',$id)
             ->get();  
-        return view('recette', ["recette" => $recette, "utilisateur" => $utilisateur,"categorie"=> $categorie, "ingredients"=>$ingredients,"etapes"=>$etapes]);
+        return view('recettes.recette', ["recette" => $recette, "utilisateur" => $utilisateur,"categorie"=> $categorie, "ingredients"=>$ingredients,"etapes"=>$etapes]);
     }
 
     /**
