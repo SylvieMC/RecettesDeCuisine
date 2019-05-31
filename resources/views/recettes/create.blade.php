@@ -14,7 +14,7 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('utilisateur.store')}}">
+      <form method="post" action="{{ route('recette.store')}}">
           @csrf
           <div class="form-group">    
               <label for="pseudo">Pseudo :</label>
