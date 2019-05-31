@@ -1,24 +1,5 @@
 
 <template>
-<<<<<<< HEAD
-    <div class='recettes'>  
-       	
-        	<p>
-            {{ recette.nom }}<br/>
-            {{ recette.description }}<br/>
-            {{ utilisateur.pseudo }}<br>
-            <span v-for="categories in categorie">
-                {{ categories.nom }}
-            </span><br/>
-            <span v-for="ingredient in ingredients">
-                {{ ingredient.nom }}
-            </span><br/>
-            <span v-for="etape in etapes">
-                {{ etape.description }}<br/>
-            </span><br/>
-
-            </p>
-=======
     <div class='recettes'>    	
     	<p>
         {{ recette.nom }}<br/>
@@ -34,7 +15,6 @@
         <p v-for="etape in etapes">
             {{ etape.description }}
         </p>
->>>>>>> users
     </div>
 </template>
 

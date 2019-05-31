@@ -26,15 +26,11 @@ class RecetteController extends Controller
             ->addSelect('categories.id')
             ->orderByRaw('recettes.id asc')
             ->get(); 
-<<<<<<< HEAD
-        return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs,"categories"=> $categories]);
-=======
         $countCategoriesParRecette = Recette::selectRaw('COUNT(*) as nb')
             ->join('categories_recettes', 'recettes.id', '=', 'categories_recettes.recette_id')
             ->groupBy('categories_recettes.recette_id')
             ->get();
             return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs,"categories"=> $categories, "nbCategorieParRecette" => $countCategoriesParRecette]);
->>>>>>> users
     }
 
     /**
@@ -128,18 +124,15 @@ class RecetteController extends Controller
      */
     public function destroy(Recette $recette)
     {
-<<<<<<< HEAD
         /*$recette->delete();
 
         return response()->json(null, 204);*/
-=======
         // delete
-        $recettes = Recette::find($id);
+        /*$recettes = Recette::find($id);
         $recettes->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted the recettes!');
-        return Redirect::to('recettes');
->>>>>>> users
+        return Redirect::to('recettes');*/
     }
 }

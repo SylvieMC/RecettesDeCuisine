@@ -37379,44 +37379,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-<<<<<<< HEAD
-  return _c("div", { staticClass: "recettes" }, [
-    _c(
-      "p",
-      [
-        _vm._v("\n        " + _vm._s(_vm.recette.nom)),
-        _c("br"),
-        _vm._v("\n        " + _vm._s(_vm.recette.description)),
-        _c("br"),
-        _vm._v("\n        " + _vm._s(_vm.utilisateur.pseudo)),
-        _c("br"),
-        _vm._v(" "),
-        _vm._l(_vm.categorie, function(categories) {
-          return _c("span", [
-            _vm._v("\n            " + _vm._s(categories.nom) + "\n        ")
-          ])
-        }),
-        _c("br"),
-        _vm._v(" "),
-        _vm._l(_vm.ingredients, function(ingredient) {
-          return _c("span", [
-            _vm._v("\n            " + _vm._s(ingredient.nom) + "\n        ")
-          ])
-        }),
-        _c("br"),
-        _vm._v(" "),
-        _vm._l(_vm.etapes, function(etape) {
-          return _c("span", [
-            _vm._v("\n            " + _vm._s(etape.description)),
-            _c("br")
-          ])
-        }),
-        _c("br")
-      ],
-      2
-    )
-  ])
-=======
+
   return _c(
     "div",
     { staticClass: "recettes" },
@@ -37454,7 +37417,7 @@ var render = function() {
     ],
     2
   )
->>>>>>> users
+
 }
 var staticRenderFns = []
 render._withStripped = true
