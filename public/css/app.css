@@ -10798,6 +10798,13 @@ a:active {
   color: #824027;
 }
 
+.profile-picture {
+  height: 4.2rem;
+  width: auto;
+  position: relative;
+  overflow: hidden;
+}
+
 footer {
   margin-top: 1rem;
 }

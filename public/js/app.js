@@ -1946,23 +1946,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['recette', 'utilisateur', 'categorie', 'ingredients', 'etapes']
 });
@@ -2025,6 +2008,23 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37796,28 +37796,75 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "utilisateurs" },
+    "section",
+    { staticClass: "resume-section p-3 p-lg-5 d-flex flex-column" },
     [
-      _c("img", { attrs: { src: _vm.avatar[0].url, alt: "avatar" } }),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.utilisateur.pseudo))]),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.utilisateur.role))]),
-      _vm._v(" "),
-      _vm._l(_vm.recettes, function(recette) {
-        return _c("div", { key: recette.id, staticClass: "recettes" }, [
-          _c("img", { attrs: { src: recette.image, alt: recette.nom } }),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "/recettes/" + recette.id } }, [
-            _vm._v(_vm._s(recette.nom))
+      _c(
+        "div",
+        { staticClass: "my-auto utilisateurs" },
+        [
+          _c("h2", { staticClass: "mb-5" }, [
+            _vm._v("\n\n            " + _vm._s(_vm.utilisateur.pseudo) + " - "),
+            _c("span", { staticClass: "text-primary" }, [
+              _vm._v(_vm._s(_vm.utilisateur.role))
+            ]),
+            _vm._v(" "),
+            _c("img", {
+              staticClass: "rounded img-fluid float-right profile-picture",
+              attrs: { src: _vm.avatar[0].url, alt: "avatar" }
+            })
           ]),
           _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(recette.description))])
-        ])
-      })
-    ],
-    2
+          _vm._l(_vm.recettes, function(recette) {
+            return _c(
+              "div",
+              {
+                key: recette.id,
+                staticClass: "resume-item d-flex flex-column flex-md-row mb-5"
+              },
+              [
+                _c("div", { staticClass: "col-lg-3" }, [
+                  _c("a", { attrs: { href: "/recettes/" + recette.id } }, [
+                    _c("img", {
+                      staticClass: "img-thumbnail",
+                      attrs: { src: recette.image, alt: recette.nom }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "resume-content mr-auto" }, [
+                  _c("h3", { staticClass: "mb-3" }, [
+                    _vm._v(_vm._s(recette.nom))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "mb-3" }, [
+                    _vm._v(_vm._s(recette.description))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    { staticClass: "btn btn-outline-secondary float-right" },
+                    [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "/recettes/" + recette.id, title: "" }
+                        },
+                        [
+                          _vm._v("Voir la recette " + _vm._s(recette.nom)),
+                          _c("i", { staticClass: "fa fa-arrow-right" })
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
+          })
+        ],
+        2
+      )
+    ]
   )
 }
 var staticRenderFns = []

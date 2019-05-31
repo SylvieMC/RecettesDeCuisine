@@ -1,22 +1,5 @@
 
 <template>
-    <!--<div class='recettes'>
-        <img :src="recette.image" :alt="recette.nom">  	
-    	<p>
-        {{ recette.nom }}<br/>
-        {{ recette.description }}<br/>
-        </p>
-        <a :href="'/utilisateurs/'+utilisateur[0].id">{{ utilisateur[0].pseudo }}</a>
-        <div v-for="(categories,index) in categorie" :key="categories.id">
-            <a :href="'/categories/'+categories.id">{{ categories.nom }}</a>
-        </div>
-        <p v-for="ingredient in ingredients">
-            {{ ingredient.nom }}
-        </p>
-        <p v-for="etape in etapes">
-            {{ etape.description }}
-        </p>
-    </div>-->
     <div class="resume-item d-flex flex-column flex-md-row mb-5 col">
         <div class="col-lg-4">
             <img class="img-thumbnail mb-3" :src="recette.image" :alt="recette.nom">
