@@ -24,7 +24,7 @@ class AvatarController extends Controller
      */
     public function create()
     {
-        //
+        return view('avatars.create');
     }
 
     /**
@@ -35,7 +35,15 @@ class AvatarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'url'=>'required|String|max:255',
+        ]);
+
+        $avatar = new Avatar([
+            'url' => $request->get('url'),
+        ]);
+        $avatar->save();
+        return redirect('/')->with('success', 'Avatar saved!');
     }
 
     /**
@@ -57,7 +65,8 @@ class AvatarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $avatar = Avatar::find($id);
+        return view('avatars.edit', ["avatar" => $avatar]);
     }
 
     /**
@@ -69,7 +78,15 @@ class AvatarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'url'=>'required|String|max:255',
+        ]);
+
+        $avatar = Avatar::find($id);
+        $avatar->url = $request->get('url');
+        $avatar->save();
+
+        return redirect('/')->with('success', 'Avatar updated!');
     }
 
     /**
@@ -80,6 +97,9 @@ class AvatarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $avatar = Avatar::find($id);
+        $avatar->delete();
+
+        return redirect('/')->with('success', 'Avatar supprimé!');
     }
 }

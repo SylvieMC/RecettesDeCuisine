@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 class Avatar extends Model
 {
 	protected $table = 'avatars';
+    protected $fillable = ['url'];
 	
     public function utilisateur()
     {

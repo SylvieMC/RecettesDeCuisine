@@ -25,7 +25,7 @@
               <label for="description">Description :</label>
               <input type="text" class="form-control" name="description"/>
           </div>                    
-          <button type="submit" class="btn btn-primary-outline">Ajouter la catégorie</button>
+          <button type="submit" class="btn btn-primary">Ajouter la catégorie</button>
       </form>
   </div>
 </div>

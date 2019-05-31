@@ -24,15 +24,15 @@ class IngredientRecetteController extends Controller
      */
     public function create()
     {
-        $categories = IngredientRecette::join('categories', 'IngredientRecette.categorie_id', '=', 'categories.id')
-            ->select('categories.nom')
-            ->addSelect('categories.id')
+        $ingredients = IngredientRecette::join('ingredients', 'ingredients_Recettes.ingredient_id', '=', 'ingredients.id')
+            ->select('ingredients.nom')
+            ->addSelect('ingredients.id')
             ->get();
-        $recettes = IngredientRecette::join('recettes', 'IngredientRecette.recette_id', '=', 'recettes.id')
+        $recettes = IngredientRecette::join('recettes', 'ingredients_Recettes.recette_id', '=', 'recettes.id')
             ->select('recettes.nom')
             ->addSelect('recettes.id')
             ->get();
-        return view('ingredientRecettes.create',["categories" => $categories, "recettes" => $recettes]);
+        return view('ingredientsRecettes.create',["ingredients" => $ingredients, "recettes" => $recettes]);
     }
 
     /**
@@ -44,19 +44,20 @@ class IngredientRecetteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'quantite'=>'required|String|max:255',
+            'quantite'=>'required|integer|min:1',
             'unite'=>'required|String|max:255',
-            'ingredient_id'=>'required|integer|min:0',
-            'recette_id'=>'required|integer|min:0',
+            'ingredient'=>'required|integer',
+            'recette'=>'required|integer',
         ]);
 
-        $utilisateur = new Utilisateur([
-            'pseudo' => $request->get('pseudo'),
-            'role' => $request->get('role'),
-            'avatar_id' => $request->get('avatar'),
+        $ingredientsRecettes = new IngredientRecette([
+            'quantite' => $request->get('quantite'),
+            'unite' => $request->get('unite'),
+            'ingredient_id' => $request->get('ingredient'),
+            'recette_id' => $request->get('recette'),
         ]);
-        $utilisateur->save();
-        return redirect('/')->with('success', 'Utilisateur saved!');
+        $ingredientsRecettes->save();
+        return redirect('/')->with('success', 'Ingrédient / Recette saved');
     }
 
     /**
@@ -78,7 +79,16 @@ class IngredientRecetteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ingredientsRecettes = IngredientRecette::find($id);
+        $ingredients = IngredientRecette::join('ingredients', 'ingredients_Recettes.ingredient_id', '=', 'ingredients.id')
+            ->select('ingredients.nom')
+            ->addSelect('ingredients.id')
+            ->get();
+        $recettes = IngredientRecette::join('recettes', 'ingredients_Recettes.recette_id', '=', 'recettes.id')
+            ->select('recettes.nom')
+            ->addSelect('recettes.id')
+            ->get();
+        return view('ingredientsRecettes.edit', ["ingredientsRecettes" => $ingredientsRecettes,"ingredients" => $ingredients, "recettes" => $recettes]);
     }
 
     /**
@@ -90,7 +100,21 @@ class IngredientRecetteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'quantite'=>'required|integer|min:1',
+            'unite'=>'required|String|max:255',
+            'ingredient'=>'required|integer',
+            'recette'=>'required|integer',
+        ]);
+
+        $ingredientsRecettes = IngredientRecette::find($id);
+        $ingredientsRecettes->quantite =  $request->get('quantite');
+        $ingredientsRecettes->unite = $request->get('unite');
+        $ingredientsRecettes->ingredient_id = $request->get('ingredient');
+        $ingredientsRecettes->recette_id = $request->get('recette');
+        $ingredientsRecettes->save();
+
+        return redirect('/')->with('success', 'ingredients / Recettes updated!');
     }
 
     /**
@@ -101,6 +125,9 @@ class IngredientRecetteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ingredientsRecettes = IngredientRecette::find($id);
+        $ingredientsRecettes->delete();
+
+        return redirect('/')->with('success', 'ingredients / Recettes supprimé!');
     }
 }
