@@ -1880,8 +1880,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['recette', 'utilisateur', 'categorie', 'ingredients', 'etapes']
 });
@@ -37298,7 +37296,7 @@ var render = function() {
       _c("p", [_vm._v(_vm._s(_vm.categorie.nom))]),
       _vm._v(" "),
       _vm._l(_vm.recettes, function(recette) {
-        return _c("div", { key: recette.id }, [
+        return _c("div", [
           _c("a", { attrs: { href: "/recettes/" + recette.id } }, [
             _vm._v(_vm._s(recette.nom))
           ]),
@@ -37379,7 +37377,6 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-
   return _c(
     "div",
     { staticClass: "recettes" },
@@ -37417,7 +37414,6 @@ var render = function() {
     ],
     2
   )
-
 }
 var staticRenderFns = []
 render._withStripped = true
