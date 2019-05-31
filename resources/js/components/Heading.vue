@@ -55,12 +55,12 @@
                   {
                       id: 3,
                       title: 'Plat',
-                      link: '/categories/1'
+                      link: '/categories/4'
                   },
                   {
                       id: 4,
-                      title: 'Sucre',
-                      link: '/categories/2'
+                      title: 'Spécialité',
+                      link: '/categories/7'
                   },
                   {
                       id: 5,
@@ -69,18 +69,18 @@
                   },
                   {
                       id: 6,
-                      title: 'Specialite',
-                      link: '/categories/4'
+                      title: 'Fruits',
+                      link: '/categories/9'
                   },
                   {
                       id: 7,
-                      title: 'Sale',
-                      link: '/categories/5'
+                      title: 'Asie',
+                      link: '/categories/6'
                   },
                   {
                       id: 8,
-                      title: 'Entree',
-                      link: '/categories/6'
+                      title: 'Chocolat',
+                      link: '/categories/5'
                   }
               ],
               image: {
