@@ -17,12 +17,19 @@ class RecetteController extends Controller
         $recettes = Recette::All();
         $utilisateurs = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
             ->select('utilisateurs.pseudo')
+            ->addSelect('utilisateurs.id')
             ->get();
         $categories = Recette::join('categories_recettes', 'recettes.id', '=', 'categories_recettes.recette_id')
             ->join('categories', 'categories.id', '=', 'categories_recettes.categorie_id')
             ->select('categories.nom')
+            ->addSelect('categories.id')
+            ->orderByRaw('recettes.id asc')
             ->get(); 
-            return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs,"categories"=> $categories]);
+        $countCategoriesParRecette = Recette::selectRaw('COUNT(*) as nb')
+            ->join('categories_recettes', 'recettes.id', '=', 'categories_recettes.recette_id')
+            ->groupBy('categories_recettes.recette_id')
+            ->get();
+            return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs,"categories"=> $categories, "nbCategorieParRecette" => $countCategoriesParRecette]);
     }
 
     /**
@@ -57,11 +64,13 @@ class RecetteController extends Controller
         $recette = Recette::findOrFail($id);
         $utilisateur = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
             ->select('utilisateurs.pseudo')
+            ->addSelect('utilisateurs.id')
             ->where('recettes.id',$id)
             ->get();
         $categorie = Recette::join('categories_recettes', 'recettes.id', '=', 'categories_recettes.recette_id')
             ->join('categories', 'categories.id', '=', 'categories_recettes.categorie_id')
             ->select('categories.nom')
+            ->addSelect('categories.id')
             ->where('recettes.id',$id)
             ->get();
         $etapes = Recette::join('etapes', 'recettes.id', '=', 'etapes.recette_id')
@@ -107,6 +116,12 @@ class RecetteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // delete
+        $recettes = Recette::find($id);
+        $recettes->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted the recettes!');
+        return Redirect::to('recettes');
     }
 }

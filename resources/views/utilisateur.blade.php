@@ -5,12 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <title>Recettes de cuisine - Categories</title>
+        <title>Recettes de cuisine</title>
     </head>
     <body>
         <div id="app">
             <heading></heading>
-            <categorie :categories="{{ $categories }}"></categorie>
+            <utilisateur :utilisateur="{{ $utilisateur }}" :avatar="{{ $avatar }}" :recettes="{{ $recettes }}" ></utilisateur>
             <bottom></bottom>
         </div>
         <script src="{{ mix('js/app.js') }}" defer></script>

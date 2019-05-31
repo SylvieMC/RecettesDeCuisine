@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
         {
             $avatar = $result['hits'][rand(0,199)]['webformatURL'];
             Avatar::create(array(
-                'lien_image' => $avatar
+                'url' => $avatar
                 )
             );
         }
         factory(Utilisateur::class, 20)->create();
         factory(Recette::class, 20)->create();
-    	factory(Categorie::class, 6)->create();
+    	factory(Categorie::class, 12)->create();
     	factory(Etape::class, 80)->create();
     	factory(Ingredient::class, 40)->create();
     	factory(IngredientRecette::class, 120)->create();
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
     	$recettesIds = DB::table('recettes')->pluck('id')->toArray();
 
     	//Remplit la table categories_recettes de 40 lignes 
-    	foreach ((range(1, 40)) as $value) {
+    	foreach ((range(1, 30)) as $value) {
 			DB::table('categories_recettes')->insert(
 			[
 			'categorie_id' => $categoriesIds[array_rand($categoriesIds)],

@@ -15,7 +15,6 @@ class CategorieController extends Controller
     public function index()
     {
         $categories = Categorie::All();
-        return view('categories', ["categories" => $categories]);
     }
 
     /**
@@ -42,21 +41,29 @@ class CategorieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Categorie  $Categorie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Categorie $Categorie)
+    public function show($id)
     {
-        //
+        $categorie = Categorie::findOrFail($id);
+        $recettes = Categorie::join('categories_recettes', 'categories.id', '=', 'categories_recettes.categorie_id')
+            ->join('recettes', 'recettes.id', '=', 'categories_recettes.recette_id')
+            ->select('recettes.nom')
+            ->addSelect('recettes.description')
+            ->addSelect('recettes.id')
+            ->where('categories.id',$id)
+            ->get();
+        return view('categorie', ["categorie" => $categorie, "recettes" => $recettes]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Categorie  $Categorie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorie $Categorie)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +72,10 @@ class CategorieController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Categorie  $Categorie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorie $Categorie)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +83,10 @@ class CategorieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Categorie  $Categorie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorie $Categorie)
+    public function destroy($id)
     {
         //
     }

@@ -37,11 +37,6 @@
                   title: 'Categories',
                   link: '/categories',
                 },
-                {
-                  id: 4,
-                  title: 'Utilisateurs',
-                  link: '/utilisateurs',
-                },
               ],
               image: {
                 id: 1,

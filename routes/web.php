@@ -13,8 +13,7 @@
 
 Route::get('/', 'IndexController@index');
 Route::get('recettes/{id}', 'RecetteController@show');
+Route::delete('recettes/{id}', 'RecetteController@destroy');
 Route::get('recettes', 'RecetteController@index');
-Route::get('categories', 'CategorieController@index');
 Route::get('categories/{id}', 'CategorieController@show');
-Route::get('utilisateurs', 'UtilisateurController@index');
 Route::get('utilisateurs/{id}', 'UtilisateurController@show');
