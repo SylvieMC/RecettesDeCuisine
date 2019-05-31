@@ -25,7 +25,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -36,7 +36,17 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom'=>'required|string|max:255',
+            'description'=>'required|string|max:255',
+        ]);
+
+        $categorie = new Categorie([
+            'nom' => $request->get('nom'),
+            'description' => $request->get('description'),
+        ]);
+        $categorie->save();
+        return redirect('/')->with('success', 'Category saved!');
     }
 
     /**

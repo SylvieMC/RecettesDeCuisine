@@ -44,9 +44,9 @@ class RecetteController extends Controller
      */
     public function store(Request $request)
     {
-       $recette =  Recette::create($request->all());
+       /*$recette =  Recette::create($request->all());
 
-        return response()->json($recette, 201);
+        return response()->json($recette, 201);*/
     }
 
     /**
@@ -87,9 +87,9 @@ class RecetteController extends Controller
      */
     public function edit(Request $request, Recette $recette)
     {
-        $recette->update($request->all());
+        /*$recette->update($request->all());
 
-        return response()->json($recette, 200);
+        return response()->json($recette, 200);*/
     }
 
     /**
@@ -101,10 +101,10 @@ class RecetteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $recette = Recette::findOrFail($id);
+        /*$recette = Recette::findOrFail($id);
         $recette->update($request->all());
 
-        return $recette;
+        return $recette;*/
     }
 
     /**
@@ -115,11 +115,8 @@ class RecetteController extends Controller
      */
     public function destroy(Recette $recette)
     {
-        // $recette = Recette::findOrFail($id);
-        // $recette->delete();
-        // return '';
-        $recette->delete();
+        /*$recette->delete();
 
-        return response()->json(null, 204);
+        return response()->json(null, 204);*/
     }
 }

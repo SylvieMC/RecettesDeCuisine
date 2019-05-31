@@ -12,14 +12,14 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::get('recettes', 'RecetteController@index');
+Route::post('recettes/create', 'RecetteController@store');
+Route::get('recettes/{id}', 'RecetteController@show');
+Route::put('recettes/edit/{recette}', 'RecetteController@edit');
+Route::delete('recettes/delete/{recette}', 'RecetteController@destroy');
 
-Route::get('api/recettes', 'RecetteController@index');
-Route::post('api/recettes/create', 'RecetteController@store');
-Route::get('api/recettes/{id}', 'RecetteController@show');
-Route::put('api/recettes/edit/{recette}', 'RecetteController@edit');
-Route::delete('api/recettes/delete/{recette}', 'RecetteController@destroy');
-
-Route::get('api/categories', 'CategorieController@index');
 Route::get('categories/{id}', 'CategorieController@show');
-Route::get('utilisateurs', 'UtilisateurController@index');
+Route::post('categories', 'CategorieController@store');
+Route::get('categorie/create', 'CategorieController@create');
+
 Route::get('utilisateurs/{id}', 'UtilisateurController@show');
