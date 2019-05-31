@@ -4,6 +4,7 @@
     	<p>{{ utilisateur.pseudo }}</p>
     	<p>{{ utilisateur.role }}</p>
         <div class="recettes" v-for="recette in recettes" :key="recette.id">
+            <img :src="recette.image" :alt="recette.nom">
             <a :href="'/recettes/'+recette.id">{{recette.nom}}</a>
             <p>{{recette.description}}</p>
         </div>

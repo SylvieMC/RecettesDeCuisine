@@ -1792,6 +1792,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['categorie', 'recettes']
 });
@@ -1880,6 +1881,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['recette', 'utilisateur', 'categorie', 'ingredients', 'etapes']
 });
@@ -1895,6 +1897,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -1939,6 +1942,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -37297,6 +37301,8 @@ var render = function() {
       _vm._v(" "),
       _vm._l(_vm.recettes, function(recette) {
         return _c("div", [
+          _c("img", { attrs: { src: recette.image, alt: recette.nom } }),
+          _vm._v(" "),
           _c("a", { attrs: { href: "/recettes/" + recette.id } }, [
             _vm._v(_vm._s(recette.nom))
           ]),
@@ -37381,6 +37387,8 @@ var render = function() {
     "div",
     { staticClass: "recettes" },
     [
+      _c("img", { attrs: { src: _vm.recette.image, alt: _vm.recette.nom } }),
+      _vm._v(" "),
       _c("p", [
         _vm._v("\n    " + _vm._s(_vm.recette.nom)),
         _c("br"),
@@ -37448,6 +37456,8 @@ var render = function() {
           _c("a", { attrs: { href: "/recettes/" + recette.id } }, [
             _vm._v(_vm._s(recette.nom))
           ]),
+          _vm._v(" "),
+          _c("img", { attrs: { src: recette.image, alt: recette.nom } }),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(recette.nom))]),
           _vm._v(" "),
@@ -37526,6 +37536,8 @@ var render = function() {
       _vm._v(" "),
       _vm._l(_vm.recettes, function(recette) {
         return _c("div", { key: recette.id, staticClass: "recettes" }, [
+          _c("img", { attrs: { src: recette.image, alt: recette.nom } }),
+          _vm._v(" "),
           _c("a", { attrs: { href: "/recettes/" + recette.id } }, [
             _vm._v(_vm._s(recette.nom))
           ]),

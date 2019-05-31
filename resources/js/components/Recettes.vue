@@ -2,6 +2,7 @@
     <div class='recettes'>
     	<div v-for="recette, index in recettes" :key="recette.id">
             <a :href="'/recettes/'+recette.id">{{ recette.nom }}</a>
+            <img :src="recette.image" :alt="recette.nom">
         	<p>{{ recette.nom }}</p>
             <p>{{ recette.description }}</p>
             <a :href="'/utilisateurs/'+utilisateurs[index].id">{{ utilisateurs[index].pseudo }}</a>

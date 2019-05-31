@@ -60,6 +60,7 @@ class UtilisateurController extends Controller
             ->select('recettes.nom')
             ->addSelect('recettes.description')
             ->addSelect('recettes.id')
+            ->addSelect('recettes.image')
             ->where('utilisateurs.id',$id)
             ->get();
         return view('utilisateurs.utilisateur', ["utilisateur" => $utilisateur, "avatar" => $avatar, "recettes" => $recettes]);

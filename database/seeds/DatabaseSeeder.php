@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         }
         factory(Utilisateur::class, 20)->create();
         factory(Recette::class, 20)->create();
-    	factory(Categorie::class, 12)->create();
+    	factory(Categorie::class, 9)->create();
     	factory(Etape::class, 80)->create();
     	factory(Ingredient::class, 40)->create();
     	factory(IngredientRecette::class, 120)->create();

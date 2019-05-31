@@ -1,6 +1,7 @@
 
 <template>
-    <div class='recettes'>    	
+    <div class='recettes'>  
+        <img :src="recette.image" :alt="recette.nom">  	
     	<p>
         {{ recette.nom }}<br/>
         {{ recette.description }}<br/>
