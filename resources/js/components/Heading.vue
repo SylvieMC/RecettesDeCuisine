@@ -30,17 +30,22 @@
                 {
                   id: 2,
                   title: 'Recettes',
-                  link: '/recettes',
+                  link: '/api/recettes',
                 },
                 {
                   id: 3,
                   title: 'Categories',
-                  link: '/categories',
+                  link: '/api/categories',
                 },
                 {
                   id: 4,
                   title: 'Utilisateurs',
-                  link: '/utilisateurs',
+                  link: '/api/utilisateurs',
+                },
+                {
+                  id: 5,
+                  title: 'Création Recette',
+                  link: '/api/recettecreate',
                 },
               ],
               image: {

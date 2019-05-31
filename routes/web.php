@@ -12,9 +12,14 @@
 */
 
 Route::get('/', 'IndexController@index');
-Route::get('recettes/{id}', 'RecetteController@show');
-Route::get('recettes', 'RecetteController@index');
-Route::get('categories', 'CategorieController@index');
+
+Route::get('api/recettes', 'RecetteController@index');
+Route::post('api/recettes/create', 'RecetteController@store');
+Route::get('api/recettes/{id}', 'RecetteController@show');
+Route::put('api/recettes/edit/{recette}', 'RecetteController@edit');
+Route::delete('api/recettes/delete/{recette}', 'RecetteController@destroy');
+
+Route::get('api/categories', 'CategorieController@index');
 Route::get('categories/{id}', 'CategorieController@show');
 Route::get('utilisateurs', 'UtilisateurController@index');
 Route::get('utilisateurs/{id}', 'UtilisateurController@show');

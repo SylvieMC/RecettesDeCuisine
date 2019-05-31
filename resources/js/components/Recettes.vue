@@ -1,4 +1,3 @@
-
 <template>
     <div class='recettes'>
     	<div v-for="recette, index in recettes" :key="recette.id">
@@ -10,6 +9,7 @@
             </p>
         </div>
     </div>
+    
 </template>
 
 <script>

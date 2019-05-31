@@ -1,18 +1,21 @@
+
 <template>
-    <div class='recettes'>    	
+    <div class='recettes'>  
+       	
         	<p>
             {{ recette.nom }}<br/>
             {{ recette.description }}<br/>
             {{ utilisateur.pseudo }}<br>
-            <p v-for="categories in categorie">
+            <span v-for="categories in categorie">
                 {{ categories.nom }}
-            </p>
-            <p v-for="ingredient in ingredients">
+            </span><br/>
+            <span v-for="ingredient in ingredients">
                 {{ ingredient.nom }}
-            </p>
-            <p v-for="etape in etapes">
-                {{ etape.description }}
-            </p>
+            </span><br/>
+            <span v-for="etape in etapes">
+                {{ etape.description }}<br/>
+            </span><br/>
+
             </p>
     </div>
 </template>

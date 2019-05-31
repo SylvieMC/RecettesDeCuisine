@@ -18,11 +18,12 @@ class RecetteController extends Controller
         $utilisateurs = Recette::join('utilisateurs', 'recettes.utilisateur_id', '=', 'utilisateurs.id')
             ->select('utilisateurs.pseudo')
             ->get();
+        //not done
         $categories = Recette::join('categories_recettes', 'recettes.id', '=', 'categories_recettes.recette_id')
             ->join('categories', 'categories.id', '=', 'categories_recettes.categorie_id')
             ->select('categories.nom')
             ->get(); 
-            return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs,"categories"=> $categories]);
+        return view('recettes', ["recettes" => $recettes, "utilisateurs"=>$utilisateurs,"categories"=> $categories]);
     }
 
     /**
@@ -32,7 +33,7 @@ class RecetteController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -43,7 +44,9 @@ class RecetteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $recette =  Recette::create($request->all());
+
+        return response()->json($recette, 201);
     }
 
     /**
@@ -82,9 +85,11 @@ class RecetteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, Recette $recette)
     {
-        //
+        $recette->update($request->all());
+
+        return response()->json($recette, 200);
     }
 
     /**
@@ -96,7 +101,10 @@ class RecetteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $recette = Recette::findOrFail($id);
+        $recette->update($request->all());
+
+        return $recette;
     }
 
     /**
@@ -105,8 +113,13 @@ class RecetteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Recette $recette)
     {
-        //
+        // $recette = Recette::findOrFail($id);
+        // $recette->delete();
+        // return '';
+        $recette->delete();
+
+        return response()->json(null, 204);
     }
 }

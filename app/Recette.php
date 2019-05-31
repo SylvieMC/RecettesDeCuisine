@@ -8,6 +8,13 @@ class Recette extends Model
 {
     protected $table = 'recettes';
 
+    protected $fillable = [
+        "nom",
+        "description",
+        "temps_preparation",
+        "nombre_portion"
+    ];
+
     public function categories()
     {
         return $this->belongsToMany(Categorie::class);
